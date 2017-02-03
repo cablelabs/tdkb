@@ -20,19 +20,12 @@
 
 #!/bin/bash
 
-loop=1
-sleep 60
+export LOG4C_RCPATH=/nvram/TDK/
+export LOG_PATH=/rdklogs/logs/
 
-# To monitor TDK Agent process and reboot box on its crash
-while [ $loop -eq 1 ]
-do
-   status=`ps | grep tdk_agent_monitor | grep -v grep`
-   if [ ! "$status" ];
-   then
-       echo "TDK agent monitor crashed.. Box going for Reboot.."
-       echo $(date) >> $TDK_PATH/monitorcrash.log
-       sleep 10 && reboot
-   fi
-   sleep 5
+cp /rdklogger/log4crc /nvram/TDK/
 
-done
+CONTENT='<appender name="RI_TESTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TESTLog.txt" layout="comcast_dated" rollingpolicy="TEST_rollingpolicy"/>\n<category name="RI.TEST" priority="debug" appender="RI_TESTrollingfileappender"/>\n<category name="RI.Stack.TEST" priority="debug" appender="RI_TESTrollingfileappender"/>\n<category name="RI.Stack.LOG.RDK.TEST" priority="debug" appender="RI_TESTrollingfileappender"/>'
+
+C=$(echo $CONTENT | sed 's/\//\\\//g' | sed 's/\"/\\\"/g')
+sed -i "/<\/log4c>/ s/.*/${C}\n&/" /nvram/TDK/log4crc

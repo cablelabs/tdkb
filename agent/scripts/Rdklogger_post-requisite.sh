@@ -19,20 +19,5 @@
 #
 
 #!/bin/bash
-
-loop=1
-sleep 60
-
-# To monitor TDK Agent process and reboot box on its crash
-while [ $loop -eq 1 ]
-do
-   status=`ps | grep tdk_agent_monitor | grep -v grep`
-   if [ ! "$status" ];
-   then
-       echo "TDK agent monitor crashed.. Box going for Reboot.."
-       echo $(date) >> $TDK_PATH/monitorcrash.log
-       sleep 10 && reboot
-   fi
-   sleep 5
-
-done
+rm /nvram/TDK/log4crc
+rm /rdklogs/logs/TESTLog.txt*
