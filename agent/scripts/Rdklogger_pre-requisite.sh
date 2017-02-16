@@ -23,7 +23,7 @@
 export LOG4C_RCPATH=/nvram/TDK/
 export LOG_PATH=/rdklogs/logs/
 
-cp /rdklogger/log4crc /nvram/TDK/
+cp /etc/log4crc /nvram/TDK/
 
 CONTENT='<appender name="RI_TESTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TESTLog.txt" layout="comcast_dated" rollingpolicy="TEST_rollingpolicy"/>\n<category name="RI.TEST" priority="debug" appender="RI_TESTrollingfileappender"/>\n<category name="RI.Stack.TEST" priority="debug" appender="RI_TESTrollingfileappender"/>\n<category name="RI.Stack.LOG.RDK.TEST" priority="debug" appender="RI_TESTrollingfileappender"/>'
 

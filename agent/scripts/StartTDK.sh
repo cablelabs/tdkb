@@ -26,6 +26,8 @@ export PATH=$PATH:/usr/local/bin:$TDK_PATH
 export TDK_LIB_PATH=$TDK_PATH/libs/
 export LD_LIBRARY_PATH=$TDK_PATH/libs/:/usr/local/lib/:/usr/local/Qt/lib/:/mnt/nfs/lib:/mnt/nfs/bin/target-snmp/lib/:/mnt/nfs/bin:/usr/local/lib/sa:$LD_LIBRARY_PATH
 
+source /nvram/TDK/Rdklogger_pre-requisite.sh
+
 export PATH HOME LD_LIBRARY_PATH
 ulimit -c unlimited
 echo "Going to start Agent"

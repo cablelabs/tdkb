@@ -23,6 +23,8 @@ export TDK_PATH=/nvram/TDK
 
 sleep 1
 
+source /nvram/TDK/Rdklogger_post-requisite.sh
+
 #Killing inactive TDK processes
 ps | grep "TDKagentMonitor" | grep -v "grep" | awk '{print $2}' | xargs kill -9 >& /dev/null
 sleep 1
