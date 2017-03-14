@@ -32,6 +32,11 @@ export PATH HOME LD_LIBRARY_PATH
 ulimit -c unlimited
 echo "Going to start Agent"
 cd $TDK_PATH/
+if [ -f "tdk_firewall_service.sh" ]
+then
+        echo "Enable iptable rules for TDK"
+        sh tdk_firewall_service.sh &
+fi
 sh TDKagentMonitor.sh &
 ./rdk_tdk_agent_process &
 
