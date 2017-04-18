@@ -19,5 +19,5 @@
 #
 
 #!/bin/bash
-rm /nvram/TDK/log4crc
+rm /nvram/log4crc
 rm /rdklogs/logs/TESTLog.txt*

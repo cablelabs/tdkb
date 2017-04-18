@@ -19,11 +19,11 @@
 #
 
 echo "Stopping TDK Agent.."
-export TDK_PATH=/nvram/TDK
+export TDK_PATH=/usr/ccsp/tdk
 
 sleep 1
 
-source /nvram/TDK/Rdklogger_post-requisite.sh
+source $TDK_PATH/Rdklogger_post-requisite.sh
 
 #Killing inactive TDK processes
 ps | grep "TDKagentMonitor" | grep -v "grep" | awk '{print $2}' | xargs kill -9 >& /dev/null
