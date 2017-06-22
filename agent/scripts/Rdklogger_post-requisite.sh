@@ -21,3 +21,4 @@
 #!/bin/bash
 rm /nvram/log4crc
 rm /rdklogs/logs/TESTLog.txt*
+rm /nvram/debug.ini
