@@ -32,6 +32,13 @@ killProcess()
    kill -9 `ps | grep $processName | grep -v grep |grep -v killProcess | awk '{ print $1}'`
 }
 
+#get the MAC address of the device
+getCMMACAddress()
+{
+    macaddress=`ifconfig erouter0 | grep HWaddr | awk '{ print $5 }'`
+    echo $macaddress
+}
+
 # Store the arguments to a variable
 event=$1
 processName=$2
@@ -42,5 +49,7 @@ case $event in
         checkProcess;;
    "killProcess")
         killProcess;;
+   "getCMMACAddress")
+        getCMMACAddress;;
    *) echo "Invalid Argument passed";;
 esac
